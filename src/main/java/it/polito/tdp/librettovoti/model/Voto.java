@@ -56,7 +56,7 @@ public class Voto {
 
 	@Override
 	public String toString() {
-		return "Voto [nome=" + nome + ", voto=" + voto + ", data=" + data + "]";
+		return "Esame "+this.getNome()+" superato con "+this.getVoto()+" il "+this.getData();
 	}
 
 	
