@@ -25,6 +25,12 @@ public class TestLibretto {
 	Libretto lib25 = libretto.votiUguali(25);
 	System.out.println(lib25);
 	
+	System.out.println("3) "+libretto.ricercaCorso("Informatica").toString());
+	
+	Voto v = new Voto("Chimica", 25, LocalDate.of(2019, 7, 15));
+	System.out.println("4-5) "+libretto.esiste("Chimica", 24));
+	
+	System.out.println("7)\n"+libretto.toString()+"\n"+libretto.librettoMigliorato());
 	
 	}
 
