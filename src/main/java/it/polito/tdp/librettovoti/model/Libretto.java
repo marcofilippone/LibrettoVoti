@@ -1,6 +1,9 @@
 package it.polito.tdp.librettovoti.model;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import static java.util.Comparator.*;
 
 public class Libretto {
 	
@@ -92,7 +95,19 @@ public class Libretto {
 		return lM;
 	}
 	
-	/*public String ordina() {
-		Collections.comparing
-	}*/
+	
+	public void ordina() {
+		Comparator<Voto> comp = comparing(Voto::getNome).thenComparing(Voto::getVoto, reverseOrder());
+		Collections.sort(voti, comp);
+	}
+	
+	public Libretto remove(int p) {
+		Libretto lDep = new Libretto();
+		for(Voto vi : voti) {
+			if(vi.getVoto()>=p) {
+				lDep.add(vi);
+			}
+		}
+		return lDep;
+	}
 }

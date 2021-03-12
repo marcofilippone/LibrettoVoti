@@ -15,7 +15,7 @@ public class TestLibretto {
 	libretto.add(voto1);
 	libretto.add(new Voto("Fisica 1", 28, LocalDate.of(2019, 7, 15)));
 	libretto.add(new Voto("Informatica", 24, LocalDate.of(2019, 7, 15)));
-	libretto.add(new Voto("Chimica", 25, LocalDate.of(2019, 7, 15)));
+	libretto.add(new Voto("Chimica", 18, LocalDate.of(2019, 7, 15)));
 	
 	System.out.println(libretto.toString());
 	
@@ -31,7 +31,11 @@ public class TestLibretto {
 	System.out.println("4-5) "+libretto.esiste("Chimica", 24));
 	
 	System.out.println("7)\n"+libretto.toString()+"\n"+libretto.librettoMigliorato());
+
+	libretto.ordina();
+	System.out.println("8) Libretto ordinato\n"+libretto.toString()+"\n");
 	
+	System.out.println("9) Libretto senza voti bassi\n"+libretto.remove(24).toString()+"\n");
 	}
 
 }
