@@ -6,7 +6,7 @@ import java.util.List;
 public class TestLibretto {
 	
 	public static void main(String[] args) {
-	
+	/*
 		System.out.println("Test metodi di Libretto");
 	Libretto libretto = new Libretto();
 	
@@ -36,6 +36,6 @@ public class TestLibretto {
 	System.out.println("8) Libretto ordinato\n"+libretto.toString()+"\n");
 	
 	System.out.println("9) Libretto senza voti bassi\n"+libretto.remove(24).toString()+"\n");
-	}
+	*/}
 
 }

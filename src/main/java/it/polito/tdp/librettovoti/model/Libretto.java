@@ -2,20 +2,27 @@ package it.polito.tdp.librettovoti.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import static java.util.Comparator.*;
 
 public class Libretto {
 	
 	private List<Voto> voti;
+	private Map<String, Voto> votiMap; // identity map: nome esame->oggetto Voto
 	
 	public Libretto() {
 		this.voti = new ArrayList<>();
+		this.votiMap = new HashMap<String, Voto>();
 	}
 
 	public void add(Voto v) {
-		if(ricercaCorso(v.getNome()) == null)
+		if(ricercaCorso(v.getNome()) == null) {
 			this.voti.add(v);
+			this.votiMap.put(v.getNome(), v);
+		}
 	}
 	
 	/*public boolean contiene(Voto v) {
@@ -61,25 +68,34 @@ public class Libretto {
 	 * @return
 	 */
 	public Voto ricercaCorso(String nomeCorso) {
-		Voto risultato = null;
+		/*Voto risultato = null;
 		for(Voto vi : this.voti) {
 			if(vi.getNome().equals(nomeCorso)) {
 				risultato = vi;
 				break;
 			}
 		}
-		return risultato;
+		return risultato;*/
+		return this.votiMap.get(nomeCorso);
 	}
 	
-	public String esiste(String corso, int voto) {
-		String s = "Corso non esistente";
-		if(ricercaCorso(corso)!=null && ricercaCorso(corso).getVoto()==voto) {
-			s = "Valutazione esistente nel libretto con stesso voto";
+	public boolean esisteDuplicato(Voto v) {
+		/*boolean trovato = false;
+		for(Voto vi : this.voti) {
+			if(vi.getNome().equals(v.getNome()) && vi.getVoto()==v.getVoto() && vi.getData().isEqual(v.getData())) {
+				trovato = true;
+				break;
+			}
 		}
-		if(ricercaCorso(corso)!=null && ricercaCorso(corso).getVoto()!=voto) {
-			s = "Conflitto! Valutazione esistente nel libretto con diverso voto";
-		}
-		return s;
+		return trovato;*/
+		
+		Voto trovato = this.votiMap.get(v.getNome());
+		if(trovato==null)
+			return false;
+		if(trovato.getVoto()==v.getVoto())
+			return true;
+		else
+			return false;
 	}
 	
 	public Libretto librettoMigliorato() {
